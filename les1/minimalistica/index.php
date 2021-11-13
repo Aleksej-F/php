@@ -1,6 +1,6 @@
 <?php 
 	define('SITE_NAME', 'PHP L_1'); 
-	define('DATE_YEAR', date("Y")); 
+	
 
 ?>
 <!-- <?php?> -->
@@ -52,7 +52,7 @@
 		</div>
 		
 		<div id="footer">
-		      <p>Copyright <?php echo DATE_YEAR?>&copy; <em>minimalistica</em>  &middot; Design: Luka Cvrk, <a href="http://www.solucija.com/" title="Free CSS Templates">Solucija</a> </p>
+		      <p>Copyright &copy; <em>minimalistica</em> &middot; Design: Luka Cvrk, <a href="http://www.solucija.com/" title="Free CSS Templates">Solucija</a></p>
 		</div>	
 	</div>
 </body>
