@@ -1,7 +1,21 @@
 <?php 
 	define('SITE_NAME', 'PHP L_1'); 
 	define('DATE_YEAR', date("Y")); 
-
+	function menu(){
+		$menu = [
+			'home' => [ 'home1', 'home2', 'home3' ],
+			'archive' => ['archive1', 'archive2', 'archive3'],
+			'contact'=> ['contact1', 'contact2', 'contact3'],
+		];
+		
+		$menu_u = "<ul id='menu'>";
+		foreach($menu as $main_menu => $submenu){
+			$submenu_u = "<ul class='submenu'><li ><a href='#'>" . implode("</a></li><li><a href='#'>",$submenu) . "</a></li></ul>" ;
+			$menu_u .= "<li class='menu__li'><a href='#'>$main_menu</a> $submenu_u   </li>";
+		}
+		$menu_u .= "</ul>";
+		return $menu_u;
+	}
 ?>
 <!-- <?php?> -->
 
@@ -17,11 +31,9 @@
 	<div id="content">
 		<h1><?php echo SITE_NAME?> </h1>
 		
-		<ul id="menu">
-			<li><a href="#">home</a></li>
-			<li><a href="#">archive</a></li>
-			<li><a href="#">contact</a></li>
-		</ul>
+		<?php
+			echo menu();
+		?>
 	
 		<div class="post">
 			<div class="details">
