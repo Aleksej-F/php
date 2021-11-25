@@ -1,0 +1,53 @@
+.container{
+    margin: 0 auto;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.container-blok{
+    margin: 10px;
+}
+.container-blok:hover{
+    cursor: pointer;
+}
+.container-img{
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modals-win{
+    max-width: 600px;
+
+    position: relative;
+}
+.modals-w{
+    width: 600px;
+    height: 90vh;
+    
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    transform: scale(0);
+}
+.modals{
+  background-color: blanchedalmond;
+    position: relative;
+}
+
+.active{
+    transition: all 1s ease 0.1s;
+    transform: scale(1); 
+}
+.closed-captioning{
+    position: absolute;
+    top: 10px;
+    left: 571px;
+    z-index: 10;
+
+}
+.closed-captioning:hover{
+    cursor: pointer;
+}
