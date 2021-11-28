@@ -8,6 +8,7 @@
     margin: 10px;
 }
 .container-blok:hover{
+    outline: 1px solid rgb(77, 173, 190);
     cursor: pointer;
 }
 .container-img{
@@ -16,28 +17,27 @@
     justify-content: center;
     align-items: center;
 }
-.modals-win{
-    max-width: 600px;
 
-    position: relative;
-}
 .modals-w{
-    width: 600px;
-    height: 90vh;
-    
+    width: 0px;
+    height: 0px;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 0;
+    
     transform: scale(0);
 }
 .modals{
-  background-color: blanchedalmond;
+    background-color: blanchedalmond;
     position: relative;
+    top: 0;
 }
 
 .active{
+    
+    width: 600px;
+    height: 500px;
     transition: all 1s ease 0.1s;
     transform: scale(1); 
 }
