@@ -1,0 +1,28 @@
+p{
+    margin: 0;
+    margin-left: 5px;
+    min-width: 15px;
+    margin-right: 5px;
+}
+.container{
+    width:500px;
+    display: flex;
+    
+}
+.container-blok{
+    margin: 10px;
+    text-align: center;
+}
+.container-blok:hover {
+  
+    outline: 1px solid rgb(77, 173, 190);
+}
+
+.container-img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
