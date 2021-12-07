@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 02 2021 г., 01:38
+-- Время создания: Дек 08 2021 г., 01:53
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.4.21
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- База данных: `brand_shop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `basket`
+--
+
+CREATE TABLE `basket` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `basket`
+--
+
+INSERT INTO `basket` (`id`, `id_user`, `id_product`, `count`) VALUES
+(6, 2, 2, 2),
+(7, 3, 3, 7),
+(38, 1, 2, 2),
+(40, 1, 8, 10),
+(41, 1, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -75,11 +99,73 @@ INSERT INTO `reviews` (`id`, `id_user`, `title`, `id_product`) VALUES
 (4, 5, 'неплохо', 2),
 (5, 1, 'dfdfgdfgdfgdfgdfgdfgdfgdfgdfgg', 1),
 (6, 1, 'dfdfgdfgdfgdfgdfgdfgdfgdfgdfgg', 1),
-(7, 1, 'fghfghr tyg rytyu yui', 4);
+(7, 1, 'fghfghr tyg rytyu yui', 4),
+(9, 1, 'reviews', 1),
+(10, 1, 'dfgdfg', 1),
+(12, 1, 'dfgdfg', 3),
+(13, 1, 'dfgdfg', 3),
+(14, 1, 'yuiyui', 3),
+(15, 1, 'dfgdfg', 8),
+(16, 1, 'fghfghfgh', 2),
+(17, 1, 'dfgdfgdfgdfgdertertert', 6),
+(18, 1, 'пропро', 6),
+(57, 1, 'werwerwer', 1),
+(58, 1, 'dfgdfgdgf', 1),
+(59, 1, 'dfgdfg', 1),
+(60, 1, 'dfgdfg', 1),
+(61, 1, 'dfgdfg', 1),
+(62, 1, 'dfgdfgdfg', 5),
+(63, 1, 'dfgdfg', 5),
+(64, 1, 'dfgdfg', 5),
+(65, 1, 'dfgdfg', 5),
+(66, 1, 'dfgdfg', 5),
+(67, 1, 'dfgdfg', 2),
+(68, 1, 'dfg', 2),
+(69, 1, 'dfg', 2),
+(70, 1, 'dfg', 2),
+(71, 1, 'dfg', 2),
+(72, 1, 'dfg', 2),
+(73, 1, 'dfg', 4),
+(74, 1, 'dg', 4),
+(75, 1, 'dfg', 4),
+(76, 1, '', 1),
+(77, 1, 'пропропро', 2),
+(78, 1, 'fghfgh', 4),
+(79, 1, 'fghfgh', 4),
+(80, 1, 'fghfgh', 4),
+(81, 1, 'fghfh', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `surname` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `login` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `surname`, `login`, `password`) VALUES
+(1, 'Алекс', 'Андреев', 'Andr', '12345'),
+(2, 'Алекс', 'Андреев', 'urand', '12345');
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `basket`
+--
+ALTER TABLE `basket`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `product`
@@ -94,8 +180,20 @@ ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `basket`
+--
+ALTER TABLE `basket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
@@ -107,7 +205,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT для таблицы `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
+-- AUTO_INCREMENT для таблицы `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
