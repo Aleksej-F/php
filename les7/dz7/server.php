@@ -1,5 +1,6 @@
 <?php
-include "config.php";
+session_start();
+include "./config/config.php";
 // session_start();
 $action = $_POST['action'];
 $reviews = $_POST['reviews'];
@@ -22,7 +23,8 @@ switch($action){
         }else {
             echo "Ошибка записи!".$id;
         }
-        break;
+    break;
+    
     case "basket":
         $sql = "select id from basket where id_user=$idUser and id_product=$id;";
         $res = mysqli_query($connect,$sql) or die("Error: ".mysqli_error($connect));
@@ -60,12 +62,41 @@ switch($action){
         header("Location: shoppingCart.php?id=$id");
     break;    
 
+    case "clearBasket":
+        $sql = "DELETE FROM `basket` WHERE `basket`.`id_user` = $idUser;";
+        $res = mysqli_query($connect,$sql) or die("Error: ".mysqli_error($connect));
+       
+        header("Location: shoppingCart.php?");
+    break;  
+    
+    case "logIn":
+        
+        $mail = $_POST['mail'] ? strip_tags($_POST['mail']) : "";
+        $salt = "sldfjsklfdj23lfd0,.sd";
+        $pass = trim(strip_tags($_POST['pass']));
+        $pass = $salt.md5($pass).$salt;
+        
+        $sql = "select id, rights from user where mail='$mail' and password='$pass'";
+        $res = mysqli_query($connect,$sql) or die("Error: ".mysqli_error($connect));
+        $user = mysqli_num_rows($res);
+       // print_r($user);
+        if(mysqli_num_rows($res)){
+           
+            $_SESSION['userId'] = $user['id'];
+            $_SESSION['userRights'] = $user['rights'];
+             setcookie("userId",$user['id']);
+             setcookie("userRights",$user['rights']);
+            echo "true";
+        }else {
+            echo "false";
+        }
+    break; 
+
+
+
      
     default:
         echo "Я не могу такие операции";    
-    }
-   //header("Location: index.php?rez={$rez}&error={$error}&par1={$par1}&par2={$par2}&action={$action}");
-   // header("Location: index.php");
-    //header( $_SERVER['HTTP_REFERER']);
+}
 
- //   INSERT INTO `basket` (`id`, `id_user`, `id_product`, `count`) VALUES (NULL, '1', '1', '1');  
+  

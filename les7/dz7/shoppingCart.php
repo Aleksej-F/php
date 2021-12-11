@@ -1,6 +1,6 @@
 <?php
 //include "function.php";
-include "config.php";
+include "./config/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,7 @@ include "config.php";
                             >
                     <h3 class="shopping-cart_grid_3">FREE</h3>
                     <h3 class="shopping-cart_grid_3">$<?=$reviews['price']*$reviews['count']?></h3>
-                    <i class="fa fa-times-circle cart_rov_col_4" aria-hidden="true" onclick="delDasket(<?=$reviews['id_product']?>)" ></i>
+                    <i class="fa fa-times-circle cart_rov_col_4" aria-hidden="true" onclick="delProductBasket({idPr:<?=$reviews['id_product']?>})" ></i>
                 </div>
                 <div class="shopping-cart_grid_separator"></div>
                 <?php  $total = $total + $reviews['price'] * $reviews['count'];?> 
@@ -73,12 +73,14 @@ include "config.php";
 
 			
             <div class="shopping-cart_button">
-				<div class="shopping-cart_button_1" >
+				<div class="shopping-cart_button_1" onclick="clearBasket()">
 					<p>cLEAR SHOPPING CART</p>
 				</div>
-				<div class="shopping-cart_button_1" >
-					<p>cONTINUE sHOPPING</p>
-				</div>
+				<a href="index.php" >
+                    <div class="shopping-cart_button_1" >
+                        <p>cONTINUE sHOPPING</p>
+                    </div>
+                </a>
 			</div>
 			<div class="shopping-cart_form">
 				<div class="shopping-cart_form_col">
@@ -106,7 +108,7 @@ include "config.php";
 						<h3 class="shopping-cart_z_3">$<?=$total?></h3>
 					</div>
 					<div class="shopping-cart_col_separator"></div>
-					<a href="checkout.html">
+					<a href="checkout.php">
 						<div class="shopping-cart_button_4">
 							<p>proceed to checkout</p>
 						</div>
@@ -117,44 +119,7 @@ include "config.php";
 
 	</section>
 		
-		<section class="subscribe">
-				<div class="wrap wrap">
-					<div class="subscribe-1">
-						<div class="subscribe-1-1">
-							<img src="img/ellipse_3_2206.png" alt="">
-						</div>
-						<div class="subscribe-1-2">
-							<h2 class="subscribe-1-2-p1">“Vestibulum quis porttitor dui! Quisque viverra nunc mi, 
-							a pulvinar purus condimentum a. Aliquam condimentum mattis neque sed pretium”</h2>
-							<p class="subscribe-1-2-p2">Bin Burhan</p>
-							<p class="subscribe-1-2-p3">Dhaka, Bd</p>
-							<div class="subscribe-1-2-slaid">
-								<div class="subscribe-1-2-slaid-elem"></div>
-								<div class="subscribe-1-2-slaid-elem active"></div>
-								<div class="subscribe-1-2-slaid-elem"></div>
-							</div>
-						</div>
-					</div>
-					<div class="subscribe-2"></div>
-					<div class="subscribe-3">
-						<div class="subscribe-3-1">
-							<p class="subscribe-3-p1">Subscribe</p>
-							<p class="subscribe-3-p2">FOR OUR NEWLETTER AND PROMOTION</p>
-							
-
-							<form class="subscribe-3-cont">
-								<input id="email" class="subscribe-3-cont-1" type="email" required pattern="\S+@[a-z]+.[a-z]+" placeholder="Enter Your Email">
-								<button class="subscribe-3-cont-2" type="submit">
-									Subscribe
-								</button>
-							</form>
-
-
-
-						</div>
-					</div>
-				</div>
-		</section>
+	<? include "./templates/subscribe.php"; ?>
 		<? include "./templates/footer.php"; ?>
 </body>
 </html>

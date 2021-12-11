@@ -1,5 +1,5 @@
 <?php
-    include "config.php";
+    include "./config/config.php";
 
 function productLoad($img) {
     $sql = "select * from product";

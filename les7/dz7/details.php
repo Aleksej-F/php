@@ -1,9 +1,9 @@
 <?php
-    include "config.php";
+    include "./config/config.php";
     $id = (int)($_GET['id']);
     $img = $_GET['img'];
 
-    $sql="SELECT * FROM `product` WHERE `id` =$id";
+    $sql="SELECT * FROM `product` WHERE `id`=$id";
     $res = mysqli_query($connect,$sql);
     $data = mysqli_fetch_assoc($res);
     //print_r($data) ;
