@@ -1,0 +1,32 @@
+.container{
+    margin: 0 auto;
+    max-width: 600px;
+   
+}
+.container-gallery{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.container-gallery__img{
+    max-width: 600px;
+    
+}
+
+.container-blok{
+    margin: 10px;
+}
+.container-img{
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.container-loading{
+    width: 100%;
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
