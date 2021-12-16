@@ -12,11 +12,14 @@ h3 { font-size: 1.7em; font-weight: normal; margin: 0 0 20px; }
 	
 #content { width: 960px; margin: 40px auto; }
 
-#menu { float: right; margin: 10px 10px 0 0; }
-	#menu li { display: inline; list-style: none; }
-	#menu li a { float: left; margin: 0 0 0 20px; color: #888; }
+#menu { display: flex; justify-content: right; margin: 10px 10px 0 0; }
+	#menu li { display: block; list-style: none; position: relative;}
+	.menu__li {height: 50px; width: 60px;}
+	#menu li a { margin: 0px 0 1px 20px;; color: #888; }
 		#menu li a:hover { color: #555; }
-
+		.menu__li:hover .submenu { transform: scaleY(1); }
+		
+		
 .post { clear: both; padding: 30px 10px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; margin: 0 0 40px; }
 	.post .details { float: left; width: 250px; }
 	.post .details .info { font-size: .9em; color: #999; }
@@ -27,3 +30,14 @@ h3 { font-size: 1.7em; font-weight: normal; margin: 0 0 20px; }
 	.col.last { margin-right: 0; }
 		
 #footer { clear: both; border-top: 1px solid #ddd; padding: 20px 0; font-size: .9em; color: #999; }
+
+.submenu{
+	/* position: absolute;  */
+	/* bottom: -50px;  */
+	transform-origin: top;
+	transition: 0.5s;
+	transform: scaleY(0) ; background-color: #8F0000; 
+	
+}
+.submenu li {   list-style: none;}
+	.submenu li a { float: left; margin: 0px 0 1px 20px; color: #888; }
