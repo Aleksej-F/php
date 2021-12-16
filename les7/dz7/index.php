@@ -1,6 +1,6 @@
 <?php
-//include "function.php";
 session_start();
+
 include "./config/config.php";
 ?>
 <!DOCTYPE html>
@@ -50,13 +50,27 @@ include "./config/config.php";
 						<a href="details.php?action=count&img=<?=$data['img']?>&id=<?=$data['id']?>" class="product-cont-elem-text-a">
 							<p class="product-cont-img-p1"><?=$data['title']?></p>
 						</a>
-						<p class="product-cont-img-p2">$<?=$data['price']?>.00</p>
+						<div class="product-cont-elem-text-admin">
+							<p class="product-cont-img-p2">$<?=$data['price']?>.00</p>
+							<? if (isset($_SESSION['userRights']) && $_SESSION['userRights']==='admin'): ?>
+								<a href="editproduct.php?action=editproduct&id=<?=$data['id']?>">
+									<div class="product-cont-elem-text-admin-a">
+										<p >Edit</p>
+									</div>
+								</a>
+							<? endif; ?>	
+						</div>
 						
 					</div>
 				</div>
 			<?php endwhile;?>
 			
-			
+
+			<!-- edit
+		
+		
+		
+		-->
 			
 			
 					<a href="#" class="button">

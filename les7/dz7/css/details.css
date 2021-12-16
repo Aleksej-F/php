@@ -55,4 +55,12 @@
     align-items: center;
     text-align: center;
 }
-
+.product__edit-textarea{
+    width: 245px;
+    height: 320px;
+    font-size: 11pt;
+}
+.product__edit-title{
+    width: 330px;
+    height: 25px;
+}

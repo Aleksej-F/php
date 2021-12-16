@@ -7,7 +7,7 @@ if(isset($_POST['register'])){//если нажата кнопка зареги�
     
     $mail = trim(strip_tags($_POST['mail']));
         // print_r($mail);
-    // print_r("</br>");
+        // print_r("</br>");
     $user = getUserRegMail($connect,$mail);
     
     if($user){

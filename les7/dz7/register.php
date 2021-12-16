@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 //include "function.php";
 include "./config/config.php";
 include_once "./controllers/User.php";
@@ -35,9 +35,9 @@ include_once "./controllers/User.php";
 	
 	<section class="checkout">
 		<div class="wrap checkout_wrap">
-		<?
-        if (isset($_SESSION['userId']) ) {?>
-            <h3 class="shopping-cart_z_4">You are already logged in</h3><Br><Br>
+		<?		
+        if (isset($_SESSION['userRights']) && !$_SESSION['userRights']==='guest' ) {?>
+            <h3 class="shopping-cart_z_4">You have already logged in.</h3><Br><Br>
 			<? } else { ?>
 			<details open> 
 				<summary class="shopping-cart_z">Register with us for future convenience</summary>

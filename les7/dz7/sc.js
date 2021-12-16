@@ -15,8 +15,7 @@ function send(){
 
 function basket(id){
     let action = 'basket';
-    let idUser = 1;
-    let str = 'idUser='+idUser+'&idProduct='+id+'&action='+action;
+    let str = 'idProduct='+id+'&action='+action;
     $.ajax({
         type: "POST",
         url: "server.php",
@@ -27,25 +26,36 @@ function basket(id){
     });
 }
 
-function delProductBasket({idPr}){
+function delProductBasket(idPr){
     let action = 'delBasket';
-    let idUser = 1;
-    let str = 'idUser='+idUser+'&idProduct='+idPr+'&action='+action;
+    let str = 'idProduct='+idPr+'&action='+action;
     $.ajax({
         type: "POST",
         url: "server.php",
         data: str,
         success: function(answer){
-           // не понял как можно сделать обновление только в корзине, обновляю всю страницу
-           $('body').html(answer);
+            $('body').html(answer);
         }
     });
 }
+function delProductBasketMini(idPr){
+    let action = 'delBasketMini';
+    let str = 'idProduct='+idPr+'&action='+action;
+    $.ajax({
+        type: "POST",
+        url: "server.php",
+        data: str,
+        success: function(answer){
+            $('#basketCard').html(answer);
+        }
+    });
+}
+
+
 
 function countBasket(id, count){
     let action = 'countBasket';
-    let idUser = 1;
-    let str = 'idUser='+idUser+'&idProduct='+id+'&action='+action+'&count='+count;
+    let str = 'idProduct='+id+'&action='+action+'&count='+count;
     $.ajax({
         type: "POST",
         url: "server.php",
@@ -58,9 +68,8 @@ function countBasket(id, count){
 }
 
 function clearBasket() {
-    let idUser = 1;
     let action = 'clearBasket';
-    let str = 'idUser='+idUser+'&action='+action;
+    let str = 'action='+action;
     let confirmation = confirm("Вы действительно хотите очистить корзину?");
     if (confirmation) {
         $.ajax({
@@ -78,6 +87,8 @@ function сontinueСheckout() {
     const rr =$('input[name=reg]:checked', '#formCheckout').val()
     if (rr ==="reg" ) {
         $('#сontСheckt').attr("href", "register.php")
+    }else {
+        //переход на страницу оформления заказа без ригистрации
     }
 }
 
@@ -93,12 +104,25 @@ function logIn(){
         data: str,
         success: function(answer){
           console.log(answer)
-            if (answer==='true'){
-              alert('Вы успешно авторизовались!')
-          } else {
-               alert('Ошибка авторизации!');
-          }
-           
+          $('body').html(answer);  
+        }
+    });
+
+}
+
+//UPDATE `basket` SET `id_user` = 35 WHERE id=(select id from basket where id_user=32);
+
+function goOut(){
+   
+    let action = 'goOut';
+    let str = '&action='+action;
+    
+    $.ajax({
+        type: "POST",
+        url: "server.php",
+        data: str,
+        success: function(answer){
+          $('body').html(answer);  
         }
     });
 

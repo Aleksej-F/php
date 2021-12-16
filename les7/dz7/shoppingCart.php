@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //include "function.php";
 include "./config/config.php";
 ?>
@@ -37,7 +39,7 @@ include "./config/config.php";
             
             <?php
 			
-                $idUser = 1;
+					$idUser = $_SESSION['userId']? $_SESSION['userId']:0;
                 $sql = "SELECT basket.id_product, basket.count, product.description, product.price, product.img, product.title FROM `basket`JOIN `product` ON basket.id_product = product.id WHERE basket.id_user = $idUser;";
                 $res = mysqli_query($connect,$sql);
                 $total = 0;
@@ -65,7 +67,7 @@ include "./config/config.php";
                             >
                     <h3 class="shopping-cart_grid_3">FREE</h3>
                     <h3 class="shopping-cart_grid_3">$<?=$reviews['price']*$reviews['count']?></h3>
-                    <i class="fa fa-times-circle cart_rov_col_4" aria-hidden="true" onclick="delProductBasket({idPr:<?=$reviews['id_product']?>})" ></i>
+                    <i class="fa fa-times-circle cart_rov_col_4" aria-hidden="true" onclick="delProductBasket(<?=$reviews['id_product']?>)" ></i>
                 </div>
                 <div class="shopping-cart_grid_separator"></div>
                 <?php  $total = $total + $reviews['price'] * $reviews['count'];?> 

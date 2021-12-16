@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 const SERVER = "localhost";
 const DB = "brand_shop";
 const LOGIN = "root";

@@ -1,6 +1,6 @@
 
 <div class="cart" >
-    <div class="cart__basket">
+    <div class="cart__basket" id="basketCard">
         <? include "basketCard.php"; ?>
     </div>
 					

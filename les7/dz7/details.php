@@ -1,12 +1,14 @@
 <?php
+    session_start();
     include "./config/config.php";
+    
+    
     $id = (int)($_GET['id']);
     $img = $_GET['img'];
 
     $sql="SELECT * FROM `product` WHERE `id`=$id";
     $res = mysqli_query($connect,$sql);
     $data = mysqli_fetch_assoc($res);
-    //print_r($data) ;
    
 ?>
 
@@ -62,7 +64,14 @@
             <input type="hidden" id="idProduct" value=<?=$data['id']?> class="container-i"/>
             <input onclick="send()" value="отправить"  type="button" class="container-b"/>
         </fieldset>
-       
+        <?php
+        if($_GET['ses'] ):?>
+            <h1>Отзывы могут оставлять только авторизованные пользователи!</h1>
+            <a href="checkout.php"><div class="cart_rov_button">Checkout</div></a>
+
+        <?php
+        endif;
+        ?>
             
         </fieldset>
     </form>
